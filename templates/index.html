@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SQL 문제은행</title>
+</head>
+
+<body>
+    <h1>문제 {{ q }}: {{ problem.title }}</h1>
+    <p><strong>테이블 설명:</strong> {{ problem.schema }}</p>
+
+    <form action="/submit" method="post">
+        <textarea name="sql" rows="10" cols="80"
+            placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
+        <input type="hidden" name="q" value="{{ q }}">
+        <button type="submit">실행하기</button>
+    </form>
+
+    {% if result %}
+    <h2>결과</h2>
+    <pre>{{ result }}</pre>
+    {% endif %}
+
+    <hr>
+
+    <h3>힌트</h3>
+    <ul>
+        {% for hint in problem.hints %}
+        <li>{{ hint }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/" method="get">
+        <input type="hidden" name="q" value="{{ q + 1 }}">
+        <button type="submit">PASS</button>
+    </form>
+</body>
+
+</html>

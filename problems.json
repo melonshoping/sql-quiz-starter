@@ -1,0 +1,22 @@
+[
+    {
+        "title": "급여가 5000 이상인 직원 이름과 급여를 조회하세요.",
+        "schema": "employees 테이블: id (정수), name (문자열), salary (정수)",
+        "answer": "SELECT name, salary FROM employees WHERE salary >= 5000;",
+        "hints": [
+            "employees 테이블을 FROM 절에 사용하세요.",
+            "salary 컬럼을 WHERE 조건으로 사용하세요.",
+            "name과 salary를 SELECT 하세요."
+        ]
+    },
+    {
+        "title": "이름에 'Kim'이 포함된 직원 목록을 조회하세요.",
+        "schema": "employees 테이블: id (정수), name (문자열), salary (정수)",
+        "answer": "SELECT * FROM employees WHERE name LIKE '%Kim%';",
+        "hints": [
+            "employees 테이블을 조회하세요.",
+            "name 컬럼에 LIKE 연산자를 사용하세요.",
+            "'%Kim%' 형태로 검색하세요."
+        ]
+    }
+]
