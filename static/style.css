@@ -1,4 +1,4 @@
-/* 기본 모바일 퍼스트 스타일 (320px 기준) */
+/* 모바일 퍼스트 스타일 */
 body {
     background-color: #1E1E1E;
     color: #F5F5F5;
@@ -8,58 +8,59 @@ body {
 }
 
 .container {
-    width: 92%;
+    width: 90%;
     max-width: 600px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 h1 {
-    font-size: 32px;
-    margin-bottom: 15px;
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 h2 {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
 p, textarea, button {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 20px;
+    line-height: 1.6;
 }
 
 .card {
     background-color: #2A2A2A;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
 textarea {
     width: 100%;
-    min-height: 160px;
+    min-height: 220px;
     background-color: #1A1A1A;
     color: #F5F5F5;
     border: 1px solid #555;
-    border-radius: 6px;
-    padding: 8px;
+    border-radius: 8px;
+    padding: 14px;
 }
 
 .button-group {
-    margin-top: 12px;
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
     background-color: #4682B4;
     border: none;
-    padding: 14px;
-    font-size: 18px;
-    border-radius: 6px;
+    padding: 18px;
+    font-size: 20px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -83,7 +84,7 @@ textarea {
 }
 
 .message {
-    font-size: 18px;
+    font-size: 20px;
     color: #FFD700;
 }
 
@@ -142,58 +143,17 @@ th {
     color: white;
 }
 
-/* 📱 375px 이상 (아이폰 사이즈 대응) */
-@media (min-width: 375px) {
-    h1 {
-        font-size: 34px;
-    }
-    h2 {
-        font-size: 28px;
-    }
-    p, textarea, button {
-        font-size: 19px;
-    }
-}
-
-/* 📱 480px 이상 (큰 모바일 대응) */
-@media (min-width: 480px) {
-    .container {
-        width: 88%;
-    }
-    h1 {
-        font-size: 36px;
-    }
-    h2 {
-        font-size: 30px;
-    }
-    p, textarea, button {
-        font-size: 20px;
-    }
-    .card {
-        padding: 12px;
-    }
-}
-
-/* 💻 768px 이상 (태블릿) */
+/* 📱 768px 이상 (태블릿) */
 @media (min-width: 768px) {
     .container {
         width: 80%;
         max-width: 900px;
     }
     h1 {
-        font-size: 28px;
+        font-size: 34px;
     }
     h2 {
-        font-size: 24px;
-    }
-    p, textarea, button {
-        font-size: 18px;
-    }
-    .button-group {
-        flex-direction: row;
-    }
-    .card {
-        padding: 20px;
+        font-size: 28px;
     }
 }
 
@@ -204,12 +164,9 @@ th {
         max-width: 1100px;
     }
     h1 {
-        font-size: 26px;
+        font-size: 32px;
     }
     h2 {
-        font-size: 22px;
-    }
-    p, textarea, button {
-        font-size: 16px;
+        font-size: 26px;
     }
 }
