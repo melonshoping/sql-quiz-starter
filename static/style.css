@@ -11,6 +11,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }
 
 h1 {
@@ -28,11 +29,11 @@ p {
 }
 
 .card {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    display: inline-block;
+    max-width: 90%;
     background-color: #2A2A2A;
+    padding: 20px;
+    margin: 20px auto;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     word-break: break-word;
