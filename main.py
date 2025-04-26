@@ -49,11 +49,5 @@ def quiz(q):
     return render_template('quiz.html', problem=problem, q=q, result=result,
                            message=message, correct=correct, submitted_sql=submitted_sql, trial=trial)
 
-@app.route('/pass/<int:q>')
-def pass_problem(q):
-    if q >= len(problems):
-        return "모든 문제를 풀었습니다!"
-    return redirect(url_for('quiz', q=q + 1))
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
