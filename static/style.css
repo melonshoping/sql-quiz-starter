@@ -1,13 +1,14 @@
+/* 모바일 퍼스트 기본 */
 body {
     background-color: #1E1E1E;
     color: #F5F5F5;
-    font-family: 'Fira Code', 'JetBrains Mono', 'Roboto Mono', monospace;
+    font-family: 'Fira Code', 'Roboto Mono', 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 95%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -17,11 +18,11 @@ h1, h2 {
 }
 
 .card {
-    background-color: #2D2D2D;
+    background-color: #2A2A2A;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
 }
 
 textarea {
@@ -39,43 +40,42 @@ textarea {
 .button-group {
     margin-top: 15px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
 }
 
 button, .btn-run, .btn-pass, .btn-next, .btn-start {
-    background-color: #4CAF50;
+    background-color: #4682B4;
     border: none;
-    padding: 14px;
-    font-size: 16px;
+    padding: 16px;
+    font-size: 18px;
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
     color: white;
-    flex: 1;
-    min-width: 120px;
+    width: 100%;
     text-align: center;
 }
 
 .btn-pass {
-    background-color: #757575;
+    background-color: #708090;
 }
 
 .btn-next {
-    background-color: #2196F3;
+    background-color: #4169E1;
 }
 
 .btn-start {
-    background-color: #2196F3;
+    background-color: #4682B4;
 }
 
 button:hover, .btn-run:hover, .btn-pass:hover, .btn-next:hover, .btn-start:hover {
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .message {
     font-size: 18px;
-    color: #FF9800;
+    color: #FFD700;
     margin-bottom: 10px;
 }
 
@@ -92,7 +92,7 @@ th, td {
 }
 
 th {
-    background-color: #424242;
+    background-color: #444;
 }
 
 .modal {
@@ -113,7 +113,7 @@ th {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
 }
 
@@ -131,32 +131,17 @@ th {
     cursor: pointer;
 }
 
-/* Mobile-first 스타일 */
-@media (max-width: 600px) {
+/* PC 확장용 */
+@media (min-width: 768px) {
     .container {
-        padding: 12px;
-    }
-    .card {
-        padding: 16px;
-        margin-bottom: 20px;
-    }
-    h1, h2 {
-        font-size: 22px;
-    }
-    textarea {
-        font-size: 16px;
-        min-height: 200px;
+        max-width: 800px;
     }
     .button-group {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        justify-content: space-between;
     }
     button, .btn-run, .btn-pass, .btn-next, .btn-start {
-        font-size: 18px;
-        padding: 18px;
-        width: 100%;
-    }
-    .modal-content {
-        width: 90%;
+        width: auto;
+        min-width: 140px;
     }
 }
