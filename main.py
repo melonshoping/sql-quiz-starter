@@ -13,13 +13,14 @@ def index():
     q = int(request.args.get('q', 1))
     submitted_sql = request.args.get('submitted_sql', '')
     message = request.args.get('message', '')
-    trial = int(request.args.get('trial', 0))  # 시도횟수 기본 0
+    trial = int(request.args.get('trial', 0))
+    correct = request.args.get('correct', '')
 
     if q > len(problems):
         return "모든 문제를 풀었습니다!"
 
     problem = problems[q-1]
-    return render_template('index.html', problem=problem, q=q, submitted_sql=submitted_sql, message=message, trial=trial)
+    return render_template('index.html', problem=problem, q=q, submitted_sql=submitted_sql, message=message, trial=trial, correct=correct)
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -30,41 +31,49 @@ def submit():
 
     conn = sqlite3.connect('test.db')
     cursor = conn.cursor()
+
+    result = None
+    correct_result = None
+    correct = ''
+    message = ''
+
     try:
-        # 사용자가 작성한 SQL 실행
         cursor.execute(sql)
         result = cursor.fetchall()
 
-        # 문제의 정답 SQL 실행
         cursor.execute(problem['answer'])
         correct_result = cursor.fetchall()
 
         if result == correct_result:
-            # 결과가 같으면 다음 문제로 이동
-            return redirect(url_for('index', q=q+1, trial=0))
+            # 결과도 보여주고 정답 메시지만 띄운다
+            correct = 'true'
+            message = "정답입니다! 🎉"
         else:
-            # 결과가 다르면 다시 시도 + trial 1 증가
-            message = "다시 시도해보세요!"
-            return render_template('index.html', problem=problem, q=q, result=result, submitted_sql=sql, message=message, trial=trial+1)
+            message = "오답입니다. 다시 시도해보세요."
 
     except Exception as e:
-        result = str(e)
-        message = "에러가 발생했습니다."
+        result = None
+        message = "오답입니다. 다시 시도해보세요."
 
     conn.close()
-    return render_template('index.html', problem=problem, q=q, result=result, submitted_sql=sql, message=message, trial=trial+1)
+
+    return render_template('index.html', problem=problem, q=q, result=result, submitted_sql=sql, message=message, trial=trial+1, correct=correct)
 
 @app.route('/pass')
 def pass_problem():
     q = int(request.args.get('q', 1))
-    trial = int(request.args.get('trial', 0))  # trial 기본값 0 (Bad Request 방지)
+    trial = int(request.args.get('trial', 0))
 
     if q > len(problems):
         return "모든 문제를 풀었습니다!"
 
     problem = problems[q-1]
-    # PASS할 때: 정답 SQL을 입력창에 복사 + trial=0 초기화
     return redirect(url_for('index', q=q, submitted_sql=problem['answer'], trial=0))
+
+@app.route('/next')
+def next_problem():
+    q = int(request.args.get('q', 1))
+    return redirect(url_for('index', q=q+1, trial=0))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
