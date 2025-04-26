@@ -41,7 +41,7 @@ def quiz(q):
                 correct = True
             else:
                 message = "오답입니다. 다시 시도해보세요."
-        except Exception as e:
+        except Exception:
             result = None
             message = "쿼리 실행 에러! 다시 시도해보세요."
         conn.close()
