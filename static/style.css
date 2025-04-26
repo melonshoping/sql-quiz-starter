@@ -138,6 +138,7 @@ th {
     }
     .card {
         padding: 20px;
+        margin-bottom: 15px;
     }
     h1, h2 {
         font-size: 24px;
@@ -152,7 +153,7 @@ th {
     }
     button, .btn-run, .btn-pass, .btn-next, .btn-start {
         font-size: 16px;
-        padding: 16px;
+        padding: 18px;
     }
     .modal-content {
         width: 90%;
