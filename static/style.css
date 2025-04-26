@@ -142,74 +142,24 @@ th {
     color: white;
 }
 
-/* 📱 375px 이상 (아이폰 크기) */
-@media (min-width: 375px) {
-    h1 {
-        font-size: 32px;
-    }
-    h2 {
-        font-size: 26px;
-    }
-    p, textarea, button {
-        font-size: 19px;
-    }
-}
-
-/* 📱 480px 이상 (큰 모바일) */
-@media (min-width: 480px) {
-    .container {
-        width: 85%;
-    }
-    h1 {
-        font-size: 34px;
-    }
-    h2 {
-        font-size: 28px;
-    }
-    p, textarea, button {
-        font-size: 20px;
-    }
-    .card {
-        padding: 16px;
-    }
-}
-
-/* 💻 768px 이상 (태블릿 + 작은 노트북) */
+/* 📱 디스플레이 크기별 미디어쿼리 */
 @media (min-width: 768px) {
     .container {
         width: 80%;
-        max-width: 900px;
+        max-width: 1000px;
     }
-    h1 {
-        font-size: 28px;
-    }
-    h2 {
-        font-size: 24px;
-    }
-    p, textarea, button {
-        font-size: 18px;
-    }
-    .button-group {
-        flex-direction: row;
-    }
-    .card {
-        padding: 20px;
-    }
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    p, textarea, button { font-size: 16px; }
+    .button-group { flex-direction: row; }
 }
 
-/* 🖥️ 1024px 이상 (PC) */
 @media (min-width: 1024px) {
     .container {
         width: 70%;
         max-width: 1100px;
     }
-    h1 {
-        font-size: 26px;
-    }
-    h2 {
-        font-size: 22px;
-    }
-    p, textarea, button {
-        font-size: 16px;
-    }
+    h1 { font-size: 26px; }
+    h2 { font-size: 22px; }
+    p, textarea, button { font-size: 16px; }
 }
