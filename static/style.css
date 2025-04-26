@@ -21,12 +21,12 @@ h1, h2 {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 }
 
 textarea {
     width: 100%;
-    height: 250px;
+    min-height: 250px;
     background-color: #1A1A1A;
     color: #F5F5F5;
     font-size: 16px;
@@ -39,10 +39,10 @@ textarea {
     margin-top: 15px;
 }
 
-button, .btn-run, .btn-pass, .btn-next {
+button, .btn-run, .btn-pass, .btn-next, .btn-start {
     background-color: #4CAF50;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 16px;
     margin-top: 10px;
     margin-right: 10px;
@@ -61,8 +61,18 @@ button, .btn-run, .btn-pass, .btn-next {
     display: inline-block;
 }
 
-button:hover, .btn-run:hover, .btn-pass:hover, .btn-next:hover {
+.btn-start {
+    background-color: #2196F3;
+}
+
+button:hover, .btn-run:hover, .btn-pass:hover, .btn-next:hover, .btn-start:hover {
     opacity: 0.85;
+}
+
+.message {
+    font-size: 18px;
+    color: #FF9800;
+    margin-bottom: 10px;
 }
 
 table {
@@ -81,18 +91,17 @@ th {
     background-color: #424242;
 }
 
-/* 모달창 스타일 */
 .modal {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 200px;
+    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.7);
 }
 
 .modal-content {
@@ -100,7 +109,7 @@ th {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 80%;
     border-radius: 10px;
 }
 
@@ -122,6 +131,14 @@ th {
 @media (max-width: 600px) {
     .container {
         padding: 10px;
+    }
+    textarea {
+        min-height: 200px;
+        font-size: 14px;
+    }
+    button, .btn-run, .btn-pass, .btn-next, .btn-start {
+        font-size: 14px;
+        padding: 10px 16px;
     }
     .modal-content {
         width: 90%;
