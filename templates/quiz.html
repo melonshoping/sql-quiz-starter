@@ -53,22 +53,24 @@
         </div>
 
         {% if result %}
-        <div class="card">
+        <div class="card overflow-card">
             <h2>결과</h2>
-            <table>
-                <tr>
-                    {% for col in problem.columns %}
-                        <th>{{ col }}</th>
-                    {% endfor %}
-                </tr>
-                {% for row in result %}
+            <div class="table-wrapper">
+                <table>
                     <tr>
-                        {% for item in row %}
-                            <td>{{ item }}</td>
+                        {% for col in problem.columns %}
+                            <th>{{ col }}</th>
                         {% endfor %}
                     </tr>
-                {% endfor %}
-            </table>
+                    {% for row in result %}
+                        <tr>
+                            {% for item in row %}
+                                <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
         {% endif %}
 
