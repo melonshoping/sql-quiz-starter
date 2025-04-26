@@ -131,7 +131,7 @@ th {
     cursor: pointer;
 }
 
-/* 진짜 모바일 최적화 */
+/* 모바일 퍼스트 */
 @media (max-width: 600px) {
     .container {
         padding: 10px;
