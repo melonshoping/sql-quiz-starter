@@ -50,7 +50,10 @@
         {% if message %}
         <div class="card">
             <p class="message">{{ message }}</p>
-            {% if result %}
+        </div>
+
+        {% if result %}
+        <div class="card">
             <h2>결과</h2>
             <table>
                 <tr>
@@ -66,11 +69,14 @@
                     </tr>
                 {% endfor %}
             </table>
-            {% endif %}
-            {% if correct %}
-                <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
-            {% endif %}
         </div>
+        {% endif %}
+
+        {% if correct %}
+        <div class="card">
+            <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
+        </div>
+        {% endif %}
         {% endif %}
     </div>
 
