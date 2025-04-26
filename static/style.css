@@ -7,16 +7,16 @@ body {
 }
 
 .container {
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    text-align: center;
 }
 
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 h2 {
@@ -26,17 +26,15 @@ h2 {
 
 p {
     font-size: 16px;
+    word-break: break-word;
 }
 
 .card {
-    display: inline-block;
-    max-width: 90%;
     background-color: #2A2A2A;
     padding: 20px;
-    margin: 20px auto;
+    margin: 20px 0;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    word-break: break-word;
 }
 
 textarea {
@@ -54,7 +52,7 @@ textarea {
 .button-group {
     margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -67,7 +65,7 @@ button, .btn-run, .btn-pass, .btn-next, .btn-start {
     cursor: pointer;
     text-decoration: none;
     color: white;
-    width: 100%;
+    flex: 1;
     text-align: center;
 }
 
@@ -116,14 +114,10 @@ th {
 /* PC용 추가 스타일 */
 @media (min-width: 768px) {
     .container {
+        width: 80%;
         max-width: 1200px;
     }
     .button-group {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    button, .btn-run, .btn-pass, .btn-next, .btn-start {
-        width: auto;
-        min-width: 140px;
+        flex-wrap: nowrap;
     }
 }
