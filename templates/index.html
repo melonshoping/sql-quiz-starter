@@ -6,54 +6,59 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>문제 {{ q }}: {{ problem.title }}</h1>
+    <div class="container">
+        <h1>문제 {{ q }}: {{ problem.title }}</h1>
 
-    <h2>상황</h2>
-    <p>{{ problem.situation }}</p>
+        <h2>상황</h2>
+        <p>{{ problem.situation }}</p>
 
-    <h2>테이블 설명</h2>
-    <p>{{ problem.schema }}</p>
+        <h2>테이블 설명</h2>
+        <p>{{ problem.schema }}</p>
 
-    <form action="/submit" method="post">
-        <textarea name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
-        <input type="hidden" name="q" value="{{ q }}">
-        <input type="hidden" name="trial" value="{{ trial }}">
-        <button type="submit">실행하기</button>
-        <a href="/pass?q={{ q }}&trial={{ trial }}" style="text-decoration:none;">
-            <button type="button">PASS (정답 복사)</button>
-        </a>
-    </form>
+        <form action="/submit" method="post">
+            <textarea name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
+            <input type="hidden" name="q" value="{{ q }}">
+            <input type="hidden" name="trial" value="{{ trial }}">
+            <div class="button-group">
+                <button type="submit" class="btn-run">실행하기</button>
+                <a href="/pass?q={{ q }}&trial={{ trial }}" class="btn-pass">PASS (정답 복사)</a>
+            </div>
+        </form>
 
-    {% if message %}
-        <p class="message"><strong>{{ message }}</strong></p>
-    {% endif %}
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
 
-    {% if result %}
-        <h2>결과</h2>
-        <table>
-            <tr>
-                {% for col in problem.columns %}
-                    <th>{{ col }}</th>
-                {% endfor %}
-            </tr>
-            {% for row in result %}
+        {% if result %}
+            <h2>결과</h2>
+            <table>
                 <tr>
-                    {% for item in row %}
-                        <td>{{ item }}</td>
+                    {% for col in problem.columns %}
+                        <th>{{ col }}</th>
                     {% endfor %}
                 </tr>
+                {% for row in result %}
+                    <tr>
+                        {% for item in row %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if correct == 'true' %}
+            <a href="/next?q={{ q }}" class="btn-next">다음 문제로 이동 ➡️</a>
+        {% endif %}
+
+        <hr>
+
+        <h3>힌트</h3>
+        <ul>
+            {% for hint in problem.hints[:trial] %}
+                <li>{{ hint }}</li>
             {% endfor %}
-        </table>
-    {% endif %}
-
-    <hr>
-
-    <h3>힌트</h3>
-    <ul>
-        {% for hint in problem.hints[:trial] %}
-            <li>{{ hint }}</li>
-        {% endfor %}
-    </ul>
-
+        </ul>
+    </div>
 </body>
 </html>
