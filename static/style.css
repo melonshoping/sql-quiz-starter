@@ -131,29 +131,30 @@ th {
     cursor: pointer;
 }
 
-/* 모바일 퍼스트 */
+/* Mobile-first 스타일 */
 @media (max-width: 600px) {
     .container {
-        padding: 10px;
+        padding: 12px;
     }
     .card {
-        padding: 20px;
-        margin-bottom: 15px;
+        padding: 16px;
+        margin-bottom: 20px;
     }
     h1, h2 {
-        font-size: 24px;
+        font-size: 22px;
     }
     textarea {
         font-size: 16px;
-        min-height: 250px;
+        min-height: 200px;
     }
     .button-group {
         flex-direction: column;
         gap: 12px;
     }
     button, .btn-run, .btn-pass, .btn-next, .btn-start {
-        font-size: 16px;
+        font-size: 18px;
         padding: 18px;
+        width: 100%;
     }
     .modal-content {
         width: 90%;
