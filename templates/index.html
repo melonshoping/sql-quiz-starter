@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>SQL 문제은행</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <h1>문제 {{ q }}: {{ problem.title }}</h1>
-    <p><strong>테이블 설명:</strong> {{ problem.schema }}</p>
+
+    <h2>상황</h2>
+    <p>{{ problem.situation }}</p>
+
+    <h2>테이블 설명</h2>
+    <p>{{ problem.schema }}</p>
 
     <form action="/submit" method="post">
-        <textarea name="sql" rows="10" cols="80" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
+        <textarea name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
         <input type="hidden" name="q" value="{{ q }}">
+        <input type="hidden" name="trial" value="{{ trial }}">
         <button type="submit">실행하기</button>
+        <a href="/pass?q={{ q }}&trial={{ trial }}" style="text-decoration:none;">
+            <button type="button">PASS (정답 복사)</button>
+        </a>
     </form>
+
+    {% if message %}
+        <p class="message"><strong>{{ message }}</strong></p>
+    {% endif %}
 
     {% if result %}
         <h2>결과</h2>
-        <table border="1" cellspacing="0" cellpadding="5">
+        <table>
             <tr>
                 {% for col in problem.columns %}
                     <th>{{ col }}</th>
@@ -36,11 +50,10 @@
 
     <h3>힌트</h3>
     <ul>
-        {% for hint in problem.hints %}
+        {% for hint in problem.hints[:trial] %}
             <li>{{ hint }}</li>
         {% endfor %}
     </ul>
 
-    <a href="/pass?q={{ q }}">PASS (정답 복사)</a>
 </body>
 </html>
