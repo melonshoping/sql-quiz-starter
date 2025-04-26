@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request
 import sqlite3
 import json
+import os  # 추가!
 
 app = Flask(__name__)
 
-with open('problems.json', 'r', encoding='utf-8') as f:
+# 🔥 절대경로로 problems.json 읽어오기
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+with open(os.path.join(BASE_DIR, 'problems.json'), 'r', encoding='utf-8') as f:
     problems = json.load(f)
 
 @app.route('/')
