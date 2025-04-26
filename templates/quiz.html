@@ -9,32 +9,37 @@
     <div class="container">
         <h1>문제 {{ q }}</h1>
 
+        <!-- 상황 설명 -->
         <div class="card">
             <h2>상황 설명</h2>
             <p>{{ problem.situation if problem.situation else '당신은 카드사 데이터 분석가입니다. 문제를 해결하세요!' }}</p>
         </div>
 
+        <!-- 문제 설명 -->
         <div class="card">
             <h2>문제 설명</h2>
             <p>{{ problem.title }}</p>
         </div>
 
+        <!-- 테이블 구조 -->
         <div class="card">
             <h2>테이블 구조</h2>
             <p>{{ problem.schema }}</p>
         </div>
 
+        <!-- 힌트 -->
         <div class="card">
             <h2>힌트</h2>
             <div class="hint-buttons">
-                {% for idx, hint in enumerate(problem.hints) %}
-                    {% if trial >= idx + 1 %}
-                        <button onclick="openHint('{{ hint }}')">힌트 {{ idx + 1 }}</button>
+                {% for hint in problem.hints %}
+                    {% if trial >= loop.index %}
+                        <button onclick="openHint('{{ hint }}')">힌트 {{ loop.index }}</button>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
 
+        <!-- SQL 입력창 -->
         <div class="card">
             <h2>SQL 입력</h2>
             <form method="POST">
@@ -47,6 +52,7 @@
             </form>
         </div>
 
+        <!-- 결과 출력 -->
         {% if message %}
         <div class="card">
             <p class="message">{{ message }}</p>
@@ -75,6 +81,7 @@
 
     </div>
 
+    <!-- 힌트 모달창 -->
     <div id="hint-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeHint()">&times;</span>
