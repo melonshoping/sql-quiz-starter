@@ -45,12 +45,10 @@ def submit():
         correct_result = cursor.fetchall()
 
         if result == correct_result:
-            # 결과도 보여주고 정답 메시지만 띄운다
             correct = 'true'
             message = "정답입니다! 🎉"
         else:
             message = "오답입니다. 다시 시도해보세요."
-
     except Exception as e:
         result = None
         message = "오답입니다. 다시 시도해보세요."
