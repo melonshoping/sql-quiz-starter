@@ -15,12 +15,12 @@ body {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 32px;
     margin-bottom: 15px;
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 26px;
     margin-bottom: 10px;
 }
 
@@ -31,7 +31,7 @@ p, textarea, button {
 
 .card {
     background-color: #2A2A2A;
-    padding: 12px;
+    padding: 10px;
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
@@ -142,24 +142,74 @@ th {
     color: white;
 }
 
-/* 📱 디스플레이 크기별 미디어쿼리 */
+/* 📱 375px 이상 (아이폰 사이즈 대응) */
+@media (min-width: 375px) {
+    h1 {
+        font-size: 34px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    p, textarea, button {
+        font-size: 19px;
+    }
+}
+
+/* 📱 480px 이상 (큰 모바일 대응) */
+@media (min-width: 480px) {
+    .container {
+        width: 88%;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    p, textarea, button {
+        font-size: 20px;
+    }
+    .card {
+        padding: 12px;
+    }
+}
+
+/* 💻 768px 이상 (태블릿) */
 @media (min-width: 768px) {
     .container {
         width: 80%;
-        max-width: 1000px;
+        max-width: 900px;
     }
-    h1 { font-size: 28px; }
-    h2 { font-size: 24px; }
-    p, textarea, button { font-size: 16px; }
-    .button-group { flex-direction: row; }
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    p, textarea, button {
+        font-size: 18px;
+    }
+    .button-group {
+        flex-direction: row;
+    }
+    .card {
+        padding: 20px;
+    }
 }
 
+/* 🖥️ 1024px 이상 (PC) */
 @media (min-width: 1024px) {
     .container {
         width: 70%;
         max-width: 1100px;
     }
-    h1 { font-size: 26px; }
-    h2 { font-size: 22px; }
-    p, textarea, button { font-size: 16px; }
+    h1 {
+        font-size: 26px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    p, textarea, button {
+        font-size: 16px;
+    }
 }
