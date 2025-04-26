@@ -7,58 +7,110 @@
 </head>
 <body>
     <div class="container">
-        <h1>문제 {{ q }}: {{ problem.title }}</h1>
+        <h1>SQL 문제 풀기</h1>
 
-        <h2>상황</h2>
-        <p>{{ problem.situation }}</p>
+        <!-- 상황 설명 -->
+        <div class="card">
+            <h2>상황 설명</h2>
+            <p>{{ problem.situation if problem.situation else '당신은 카드사 데이터 분석가입니다. 문제를 해결해보세요!' }}</p>
+        </div>
 
-        <h2>테이블 설명</h2>
-        <p>{{ problem.schema }}</p>
+        <!-- 문제 설명 -->
+        <div class="card">
+            <h2>문제 설명</h2>
+            <p>{{ problem.title }}</p>
+        </div>
 
-        <form action="/submit" method="post">
-            <textarea name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
-            <input type="hidden" name="q" value="{{ q }}">
-            <input type="hidden" name="trial" value="{{ trial }}">
-            <div class="button-group">
-                <button type="submit" class="btn-run">실행하기</button>
-                <a href="/pass?q={{ q }}&trial={{ trial }}" class="btn-pass">PASS (정답 복사)</a>
+        <!-- 테이블 설명 -->
+        <div class="card">
+            <h2>테이블 구조</h2>
+            <p>{{ problem.schema }}</p>
+        </div>
+
+        <!-- 힌트 버튼 -->
+        <div class="card">
+            <h2>힌트</h2>
+            <div class="hint-buttons">
+                {% if trial >= 1 %}
+                    <button onclick="openHint('hint1')">힌트 1</button>
+                {% endif %}
+                {% if trial >= 2 %}
+                    <button onclick="openHint('hint2')">힌트 2</button>
+                {% endif %}
+                {% if trial >= 3 %}
+                    <button onclick="openHint('hint3')">힌트 3</button>
+                {% endif %}
             </div>
-        </form>
+        </div>
 
+        <!-- SQL 입력창 -->
+        <div class="card">
+            <h2>SQL 입력</h2>
+            <form action="/submit" method="post">
+                <textarea name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql if submitted_sql else '' }}</textarea><br>
+                <input type="hidden" name="q" value="{{ q }}">
+                <input type="hidden" name="trial" value="{{ trial }}">
+                <div class="button-group">
+                    <button type="submit" class="btn-run">실행하기</button>
+                    <a href="/pass?q={{ q }}&trial={{ trial }}" class="btn-pass">PASS</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- 결과 표시 -->
         {% if message %}
+        <div class="card">
             <p class="message">{{ message }}</p>
-        {% endif %}
-
-        {% if result %}
-            <h2>결과</h2>
-            <table>
-                <tr>
-                    {% for col in problem.columns %}
-                        <th>{{ col }}</th>
-                    {% endfor %}
-                </tr>
-                {% for row in result %}
+            {% if result %}
+                <h2>결과</h2>
+                <table>
                     <tr>
-                        {% for item in row %}
-                            <td>{{ item }}</td>
+                        {% for col in problem.columns %}
+                            <th>{{ col }}</th>
                         {% endfor %}
                     </tr>
-                {% endfor %}
-            </table>
+                    {% for row in result %}
+                        <tr>
+                            {% for item in row %}
+                                <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
         {% endif %}
 
+        <!-- 다음 문제로 이동 -->
         {% if correct == 'true' %}
             <a href="/next?q={{ q }}" class="btn-next">다음 문제로 이동 ➡️</a>
         {% endif %}
 
-        <hr>
-
-        <h3>힌트</h3>
-        <ul>
-            {% for hint in problem.hints[:trial] %}
-                <li>{{ hint }}</li>
-            {% endfor %}
-        </ul>
     </div>
+
+    <!-- 힌트 모달창 -->
+    <div id="hint-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHint()">&times;</span>
+            <p id="hint-text"></p>
+        </div>
+    </div>
+
+    <script>
+        const hints = {
+            hint1: "{{ problem.hints[0] if problem.hints|length > 0 else '' }}",
+            hint2: "{{ problem.hints[1] if problem.hints|length > 1 else '' }}",
+            hint3: "{{ problem.hints[2] if problem.hints|length > 2 else '' }}"
+        };
+
+        function openHint(key) {
+            document.getElementById('hint-text').innerText = hints[key];
+            document.getElementById('hint-modal').style.display = 'block';
+        }
+
+        function closeHint() {
+            document.getElementById('hint-modal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
