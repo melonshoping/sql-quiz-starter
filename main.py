@@ -4,7 +4,6 @@ import json
 
 app = Flask(__name__)
 
-# 문제 파일 불러오기
 with open('problems.json', 'r', encoding='utf-8') as f:
     problems = json.load(f)
 
