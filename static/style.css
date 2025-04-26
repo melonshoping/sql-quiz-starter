@@ -36,7 +36,10 @@ textarea {
 }
 
 .button-group {
-    margin-top: 15px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 button, .btn-run, .btn-pass, .btn-next, .btn-start {
@@ -44,12 +47,13 @@ button, .btn-run, .btn-pass, .btn-next, .btn-start {
     border: none;
     padding: 12px 20px;
     font-size: 16px;
-    margin-top: 10px;
-    margin-right: 10px;
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
     color: white;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
 }
 
 .btn-pass {
@@ -58,11 +62,11 @@ button, .btn-run, .btn-pass, .btn-next, .btn-start {
 
 .btn-next {
     background-color: #2196F3;
-    display: inline-block;
 }
 
 .btn-start {
     background-color: #2196F3;
+    margin-top: 20px;
 }
 
 button:hover, .btn-run:hover, .btn-pass:hover, .btn-next:hover, .btn-start:hover {
@@ -132,13 +136,19 @@ th {
     .container {
         padding: 10px;
     }
+    h1, h2 {
+        font-size: 22px;
+    }
     textarea {
         min-height: 200px;
         font-size: 14px;
     }
+    .button-group {
+        flex-direction: column;
+    }
     button, .btn-run, .btn-pass, .btn-next, .btn-start {
         font-size: 14px;
-        padding: 10px 16px;
+        padding: 14px;
     }
     .modal-content {
         width: 90%;
