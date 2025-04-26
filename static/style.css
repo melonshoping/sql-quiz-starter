@@ -1,10 +1,123 @@
 body {
+    background-color: #1E1E1E;
+    color: #F5F5F5;
     font-family: 'Fira Code', 'Roboto Mono', 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.card {
+    background-color: #2A2A2A;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
 textarea {
+    width: 100%;
+    min-height: 200px;
     background-color: #1A1A1A;
     color: #F5F5F5;
+    font-size: 16px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 10px;
 }
-.card {
+
+.button-group {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
+    flex: 1;
+    background-color: #4682B4;
     border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-pass {
+    background-color: #708090;
+}
+
+.btn-next {
+    background-color: #4CAF50;
+}
+
+.btn-hint {
+    background-color: #6A5ACD;
+}
+
+.btn-run:hover, .btn-pass:hover, .btn-start:hover, .btn-next:hover, .btn-hint:hover {
+    opacity: 0.9;
+}
+
+.message {
+    font-size: 18px;
+    color: #FFD700;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: #2A2A2A;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    color: white;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
 }
