@@ -3,7 +3,7 @@ body {
     color: #F5F5F5;
     font-family: 'Fira Code', 'JetBrains Mono', 'Roboto Mono', monospace;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 .container {
@@ -33,10 +33,11 @@ textarea {
     padding: 10px;
     border: 1px solid #555;
     border-radius: 8px;
+    resize: vertical;
 }
 
 .button-group {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -45,7 +46,7 @@ textarea {
 button, .btn-run, .btn-pass, .btn-next, .btn-start {
     background-color: #4CAF50;
     border: none;
-    padding: 12px 20px;
+    padding: 14px;
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
@@ -66,7 +67,6 @@ button, .btn-run, .btn-pass, .btn-next, .btn-start {
 
 .btn-start {
     background-color: #2196F3;
-    margin-top: 20px;
 }
 
 button:hover, .btn-run:hover, .btn-pass:hover, .btn-next:hover, .btn-start:hover {
@@ -131,24 +131,28 @@ th {
     cursor: pointer;
 }
 
-/* 모바일 대응 */
+/* 진짜 모바일 최적화 */
 @media (max-width: 600px) {
     .container {
         padding: 10px;
     }
+    .card {
+        padding: 20px;
+    }
     h1, h2 {
-        font-size: 22px;
+        font-size: 24px;
     }
     textarea {
-        min-height: 200px;
-        font-size: 14px;
+        font-size: 16px;
+        min-height: 250px;
     }
     .button-group {
         flex-direction: column;
+        gap: 12px;
     }
     button, .btn-run, .btn-pass, .btn-next, .btn-start {
-        font-size: 14px;
-        padding: 14px;
+        font-size: 16px;
+        padding: 16px;
     }
     .modal-content {
         width: 90%;
