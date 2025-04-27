@@ -30,22 +30,22 @@ h1 {
 h2 {
     font-size: 24px;
     font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 8px;
     color: #1565C0;
 }
 
 p {
     font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 /* 버튼 스타일 */
 a.btn-start, .btn-run, .btn-pass, .btn-next, .btn-hint {
     display: inline-block;
     margin-top: 10px;
-    padding: 16px 24px;
+    padding: 14px 20px;
     font-size: 18px;
     background-color: #1976D2;
     color: #fff;
@@ -54,7 +54,8 @@ a.btn-start, .btn-run, .btn-pass, .btn-next, .btn-hint {
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    min-height: 50px;
+    min-height: 48px;
+    white-space: nowrap;
 }
 
 .btn-pass, .btn-next, .btn-hint {
@@ -122,9 +123,9 @@ th, td {
 }
 
 /* 완료 페이지 */
-.complete-wrapper {
+.complete-container {
     text-align: center;
-    padding: 20px;
+    padding: 30px 10px;
 }
 
 /* 반응형 */
@@ -137,7 +138,7 @@ th, td {
         font-size: 32px;
     }
     h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
     p, textarea, button {
         font-size: 18px;
