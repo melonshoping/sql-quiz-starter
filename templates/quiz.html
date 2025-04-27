@@ -6,33 +6,33 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container quiz-container">
 
-        <div class="card situation-card">
+        <section class="section situation-section">
             <h2>상황 설명</h2>
             <p>{{ problem.situation if problem.situation else '당신은 카드사 데이터 분석가입니다.' }}</p>
-        </div>
+        </section>
 
-        <div class="card problem-card">
+        <section class="section problem-section">
             <h2>문제 설명</h2>
             <p>{{ problem.title }}</p>
-        </div>
+        </section>
 
-        <div class="card table-card">
+        <section class="section table-section">
             <h2>테이블 구조</h2>
             <p>{{ problem.schema }}</p>
-        </div>
+        </section>
 
-        <div class="card hint-card">
+        <section class="section hint-section">
             <h2>힌트</h2>
             {% for hint in problem.hints %}
                 {% if trial >= loop.index %}
                     <button class="btn-hint" onclick="openHint('{{ hint }}')">힌트 {{ loop.index }}</button>
                 {% endif %}
             {% endfor %}
-        </div>
+        </section>
 
-        <div class="card sql-input-card">
+        <section class="section sql-section">
             <h2>SQL 입력</h2>
             <form method="POST">
                 <textarea id="sql-input" name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql }}</textarea>
@@ -42,16 +42,16 @@
                     <button type="button" class="btn-pass" onclick="fillAnswer('{{ problem.answer | replace("'", "\\'") }}')">PASS</button>
                 </div>
             </form>
-        </div>
+        </section>
 
         {% if message %}
-        <div class="card message-card">
+        <section class="section message-section">
             <p class="message">{{ message }}</p>
-        </div>
+        </section>
         {% endif %}
 
         {% if result %}
-        <div class="card result-card">
+        <section class="section result-section">
             <h2>결과</h2>
             <div class="table-wrapper">
                 <table>
@@ -73,13 +73,13 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </section>
         {% endif %}
 
         {% if correct %}
-        <div class="card next-card">
+        <section class="section next-section">
             <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
-        </div>
+        </section>
         {% endif %}
     </div>
 
