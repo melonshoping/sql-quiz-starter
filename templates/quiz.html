@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>SQL 문제 {{ q }}</title>
+    <title>SQL 퀴즈 {{ q }}</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -35,7 +35,7 @@
         <section class="section sql-section">
             <h2>SQL 입력</h2>
             <form method="POST">
-                <textarea id="sql-input" name="sql" placeholder="여기에 SQL 쿼리를 입력하세요">{{ submitted_sql }}</textarea>
+                <textarea id="sql-input" name="sql" placeholder="SQL 쿼리를 작성하세요">{{ submitted_sql }}</textarea>
                 <input type="hidden" name="trial" value="{{ trial }}">
                 <div class="button-group">
                     <button type="submit" class="btn-run">실행하기</button>
