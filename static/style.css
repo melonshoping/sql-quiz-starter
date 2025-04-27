@@ -2,53 +2,72 @@
 body {
     background-color: #1E1E1E;
     color: #F5F5F5;
-    font-family: 'Fira Code', 'Roboto Mono', 'Noto Sans KR', sans-serif;
+    font-family: 'SamsungOne', 'Noto Sans KR', 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
 }
 
 .container {
-    width: 95vw;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 5vw 2vw;
+    padding: 4vw 2vw;
 }
 
-h1 {
-    font-size: 8vw;
+.section {
+    padding: 3vw 0;
+    border-bottom: 1px solid #333;
+}
+
+.intro-section {
     text-align: center;
 }
 
+.situation-section {
+    background-color: #252525;
+}
+
+.problem-section {
+    background-color: #202020;
+}
+
+.table-section {
+    background-color: #1C1C1C;
+}
+
+.hint-section {
+    background-color: #191919;
+}
+
+.sql-section {
+    background-color: #161616;
+}
+
+h1 {
+    font-size: 7vw;
+    font-weight: bold;
+}
+
 h2 {
-    font-size: 6vw;
-    margin-bottom: 4vw;
+    font-size: 5.5vw;
+    font-weight: bold;
+    margin-bottom: 2vw;
 }
 
-p, textarea, button {
-    font-size: 5vw;
+p {
+    font-size: 4.5vw;
     line-height: 1.6;
-}
-
-.card {
-    background-color: #2A2A2A;
-    padding: 4vw;
-    margin-bottom: 4vw;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    width: 95vw;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 textarea {
     width: 100%;
-    min-height: 220px;
+    min-height: 200px;
     background-color: #1A1A1A;
     color: #F5F5F5;
     border: 1px solid #555;
     border-radius: 8px;
     padding: 4vw;
+    font-size: 4.5vw;
 }
 
 .button-wrapper, .button-group {
@@ -61,7 +80,7 @@ textarea {
     border: none;
     padding: 4vw;
     font-size: 5vw;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
     color: white;
@@ -87,18 +106,19 @@ textarea {
 
 .table-wrapper {
     overflow-x: auto;
+    margin-top: 3vw;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 4vw;
 }
 
 th, td {
     border: 1px solid #555;
     padding: 3vw;
     text-align: center;
+    font-size: 4vw;
 }
 
 th {
@@ -139,34 +159,16 @@ th {
     color: white;
 }
 
-/* 📱 태블릿 대응 (768px ~ 1023px) */
+/* 📱 태블릿 대응 */
 @media (min-width: 768px) {
-    .container {
-        width: 80vw;
-    }
-    h1 {
-        font-size: 6vw;
-    }
-    h2 {
-        font-size: 5vw;
-    }
+    h1 { font-size: 5vw; }
+    h2 { font-size: 4vw; }
+    p, textarea, button { font-size: 3.5vw; }
 }
 
-/* 🖥️ PC 대응 (1024px 이상) */
+/* 🖥️ PC 대응 */
 @media (min-width: 1024px) {
-    .container {
-        width: 700px;
-    }
-    h1 {
-        font-size: 32px;
-    }
-    h2 {
-        font-size: 24px;
-    }
-    p, textarea, button {
-        font-size: 18px;
-    }
-    .btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
-        padding: 16px;
-    }
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    p, textarea, button { font-size: 18px; }
 }
