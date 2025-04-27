@@ -8,35 +8,37 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 600px;
+    width: 95vw;
     margin: 0 auto;
-    padding: 20px 10px;
+    padding: 5vw 2vw;
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 8vw;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 5vw;
 }
 
 h2 {
-    font-size: 30px;
-    margin-bottom: 12px;
+    font-size: 6vw;
+    margin-bottom: 4vw;
 }
 
 p, textarea, button {
-    font-size: 22px;
+    font-size: 5vw;
     line-height: 1.6;
 }
 
 .card {
     background-color: #2A2A2A;
-    padding: 10px;
-    margin-bottom: 8px;
+    padding: 4vw;
+    margin-bottom: 2vw;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     min-height: 15vh;
+    width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 textarea {
@@ -46,21 +48,21 @@ textarea {
     color: #F5F5F5;
     border: 1px solid #555;
     border-radius: 8px;
-    padding: 16px;
+    padding: 4vw;
 }
 
 .button-group {
-    margin-top: 15px;
+    margin-top: 4vw;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 4vw;
 }
 
 .btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
     background-color: #4682B4;
     border: none;
-    padding: 20px;
-    font-size: 22px;
+    padding: 4vw;
+    font-size: 5vw;
     border-radius: 8px;
     cursor: pointer;
     text-align: center;
@@ -85,8 +87,9 @@ textarea {
 }
 
 .message {
-    font-size: 20px;
+    font-size: 5vw;
     color: #FFD700;
+    text-align: center;
 }
 
 .table-wrapper {
@@ -96,12 +99,12 @@ textarea {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
+    margin-top: 4vw;
 }
 
 th, td {
     border: 1px solid #555;
-    padding: 10px;
+    padding: 3vw;
     text-align: center;
 }
 
@@ -124,7 +127,7 @@ th {
 .modal-content {
     background-color: #2A2A2A;
     margin: 20% auto;
-    padding: 20px;
+    padding: 4vw;
     border-radius: 10px;
     width: 90%;
     max-width: 400px;
@@ -135,7 +138,7 @@ th {
 .close {
     color: #aaa;
     float: right;
-    font-size: 24px;
+    font-size: 6vw;
     font-weight: bold;
     cursor: pointer;
 }
@@ -147,27 +150,25 @@ th {
 /* 📱 768px 이상 (태블릿) */
 @media (min-width: 768px) {
     .container {
-        width: 80%;
-        max-width: 900px;
+        width: 80vw;
     }
     h1 {
-        font-size: 34px;
+        font-size: 6vw;
     }
     h2 {
-        font-size: 28px;
+        font-size: 5vw;
     }
 }
 
 /* 🖥️ 1024px 이상 (PC) */
 @media (min-width: 1024px) {
     .container {
-        width: 70%;
-        max-width: 1100px;
+        width: 70vw;
     }
     h1 {
-        font-size: 32px;
+        font-size: 4vw;
     }
     h2 {
-        font-size: 26px;
+        font-size: 3.5vw;
     }
 }
