@@ -1,10 +1,11 @@
-/* 모바일 퍼스트 스타일 */
+/* 기본 설정 */
 body {
     background-color: #1E1E1E;
     color: #F5F5F5;
     font-family: 'Fira Code', 'Roboto Mono', 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .container {
@@ -15,8 +16,7 @@ body {
 
 h1 {
     font-size: 8vw;
-    font-weight: bold;
-    margin-bottom: 5vw;
+    text-align: center;
 }
 
 h2 {
@@ -32,11 +32,11 @@ p, textarea, button {
 .card {
     background-color: #2A2A2A;
     padding: 4vw;
-    margin-bottom: 2vw;
+    margin-bottom: 4vw;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    min-height: 15vh;
     width: 95vw;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -51,11 +51,9 @@ textarea {
     padding: 4vw;
 }
 
-.button-group {
+.button-wrapper, .button-group {
+    text-align: center;
     margin-top: 4vw;
-    display: flex;
-    flex-direction: column;
-    gap: 4vw;
 }
 
 .btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
@@ -65,7 +63,6 @@ textarea {
     font-size: 5vw;
     border-radius: 8px;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     color: white;
 }
@@ -80,10 +77,6 @@ textarea {
 
 .btn-hint {
     background-color: #6A5ACD;
-}
-
-.btn-run:hover, .btn-pass:hover, .btn-start:hover, .btn-next:hover, .btn-hint:hover {
-    opacity: 0.9;
 }
 
 .message {
@@ -120,7 +113,6 @@ th {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.8);
 }
 
@@ -147,7 +139,7 @@ th {
     color: white;
 }
 
-/* 📱 768px 이상 (태블릿) */
+/* 📱 태블릿 대응 (768px ~ 1023px) */
 @media (min-width: 768px) {
     .container {
         width: 80vw;
@@ -160,15 +152,21 @@ th {
     }
 }
 
-/* 🖥️ 1024px 이상 (PC) */
+/* 🖥️ PC 대응 (1024px 이상) */
 @media (min-width: 1024px) {
     .container {
-        width: 70vw;
+        width: 700px;
     }
     h1 {
-        font-size: 4vw;
+        font-size: 32px;
     }
     h2 {
-        font-size: 3.5vw;
+        font-size: 24px;
+    }
+    p, textarea, button {
+        font-size: 18px;
+    }
+    .btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
+        padding: 16px;
     }
 }
