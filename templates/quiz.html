@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL 퀴즈 {{ q }}</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/style.css?v=1">
 </head>
 <body>
     <div class="container quiz-container">
@@ -68,7 +68,7 @@
                 <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
             </div>
             {% endif %}
-        
+
         {% else %}
             <script>
                 window.location.href = "/complete";
@@ -98,4 +98,3 @@
     </script>
 </body>
 </html>
-     
