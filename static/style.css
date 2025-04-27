@@ -1,4 +1,4 @@
-/* Reset */
+/* 기본 */
 body {
     margin: 0;
     padding: 0;
@@ -13,51 +13,52 @@ body {
 /* 공통 컨테이너 */
 .container {
     width: 90%;
-    max-width: 1000px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* 섹션 공통 */
+/* 섹션 스타일 */
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .intro-section {
     text-align: center;
+    margin-top: 40px;
 }
 
 .quiz-container {
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
-/* 텍스트 스타일 */
+/* 텍스트 */
 h1 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 p {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
 }
 
 /* 버튼 */
 a.btn-start, .btn-run, .btn-pass, .btn-next, .btn-hint {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 16px 24px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: #1976D2;
     color: #fff;
     border: none;
@@ -65,6 +66,7 @@ a.btn-start, .btn-run, .btn-pass, .btn-next, .btn-hint {
     text-decoration: none;
     text-align: center;
     cursor: pointer;
+    min-height: 50px;
 }
 
 .btn-pass {
@@ -81,13 +83,17 @@ a.btn-start, .btn-run, .btn-pass, .btn-next, .btn-hint {
 
 /* SQL 입력창 */
 textarea {
-    width: 100%;
+    width: 90%;
     min-height: 200px;
-    padding: 20px;
-    font-size: 16px;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background: #fff;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* 결과 테이블 */
@@ -104,9 +110,9 @@ table {
 
 th, td {
     border: 1px solid #ccc;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 /* 모달 */
@@ -137,22 +143,20 @@ th, td {
     cursor: pointer;
 }
 
-/* 반응형 */
-@media (min-width: 768px) {
+/* PC 반응형 */
+@media (min-width: 1024px) {
+    .container {
+        width: 80%;
+        max-width: 1000px;
+    }
+
     h1 {
-        font-size: 36px;
+        font-size: 32px;
     }
     h2 {
         font-size: 28px;
     }
     p, textarea, button {
         font-size: 18px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        width: 80%;
-        max-width: 1000px;
     }
 }
