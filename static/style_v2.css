@@ -1,4 +1,3 @@
-/* 기본 모바일 퍼스트 스타일 */
 body {
     background-color: #1E1E1E;
     color: #F5F5F5;
@@ -17,24 +16,20 @@ body {
 h1 {
     font-size: 28px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 h2 {
     font-size: 24px;
+    margin-top: 30px;
     margin-bottom: 10px;
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
 }
 
 p, textarea, button {
     font-size: 18px;
     line-height: 1.5;
-}
-
-.card {
-    background-color: #2A2A2A;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 textarea {
@@ -51,7 +46,7 @@ textarea {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
@@ -142,26 +137,14 @@ th {
     color: white;
 }
 
-/* PC 대응 (768px 이상) */
-@media (min-width: 768px) {
-    .container {
-        width: 80%;
-        max-width: 1000px;
-    }
-
+@media (max-width: 767px) {
     h1 {
-        font-size: 24px;
+        font-size: 26px;
     }
-
     h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
-
     p, textarea, button {
-        font-size: 16px;
-    }
-
-    .button-group {
-        flex-direction: row;
+        font-size: 18px;
     }
 }
