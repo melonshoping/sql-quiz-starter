@@ -12,7 +12,7 @@
 
     <div class="card-section">
       <h2>📘 상황 설명</h2>
-      <p>{{ problem.situation }}</p>
+      <p>{{ problem.situation | default('상황 설명이 제공되지 않았습니다.') }}</p>
     </div>
 
     <div class="card-section">
@@ -26,6 +26,9 @@
     </div>
 
     <form method="POST">
+      <!-- trial 기본값 보호 -->
+      <input type="hidden" name="trial" value="{{ trial | default(0) }}">
+
       <h2>💻 SQL 입력</h2>
       <textarea name="sql" placeholder="여기에 SQL을 작성하세요">{{ submitted_sql }}</textarea>
 
