@@ -1,82 +1,150 @@
 body {
-  background-color: #1E1E1E;
-  color: #F5F5F5;
-  font-family: 'Fira Code', 'Roboto Mono', 'Noto Sans KR', sans-serif;
-  margin: 0;
-  padding: 0;
+    background-color: #1E1E1E;
+    color: #F5F5F5;
+    font-family: 'Fira Code', 'Roboto Mono', 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-  width: 90%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
 }
 
 p, textarea, button {
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.card-section {
-  background-color: #2A2A2A;
-  padding: 16px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 textarea {
-  width: 100%;
-  min-height: 160px;
-  background-color: #1A1A1A;
-  color: #F5F5F5;
-  border: 1px solid #555;
-  border-radius: 8px;
-  padding: 10px;
+    width: 100%;
+    min-height: 200px;
+    background-color: #1A1A1A;
+    color: #F5F5F5;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 10px;
 }
 
 .button-group {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.btn-run,
-.btn-pass,
-.btn-next,
-.btn-start {
-  background-color: #4682B4;
-  border: none;
-  padding: 14px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  text-align: center;
-  width: 100%;
+.btn-run, .btn-pass, .btn-start, .btn-next, .btn-hint {
+    background-color: #4682B4;
+    border: none;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: white;
 }
 
 .btn-pass {
-  background-color: #708090;
+    background-color: #708090;
 }
 
 .btn-next {
-  background-color: #4CAF50;
+    background-color: #4CAF50;
 }
 
-.btn-start {
-  background-color: #6A5ACD;
-  margin-top: 20px;
-  display: block;
+.btn-hint {
+    background-color: #6A5ACD;
+}
+
+.btn-run:hover, .btn-pass:hover, .btn-start:hover, .btn-next:hover, .btn-hint:hover {
+    opacity: 0.9;
+}
+
+.message {
+    font-size: 18px;
+    color: #FFD700;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #444;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: #2A2A2A;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    color: white;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 26px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    p, textarea, button {
+        font-size: 18px;
+    }
 }
