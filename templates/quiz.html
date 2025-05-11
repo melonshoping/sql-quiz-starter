@@ -1,100 +1,85 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL 퀴즈 {{ q }}</title>
-    <link rel="stylesheet" href="/static/style_v2.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL 퀴즈 {{ q }}</title>
+  <link rel="stylesheet" href="/static/style_v2.css" />
 </head>
 <body>
-    <div class="container quiz-container">
+  <div class="container">
+    <h1>SQL 퀴즈 {{ q }}</h1>
 
-    {% if problem %}
-        <h2>상황 설명</h2>
-        <p>{{ problem.situation if problem.situation else '당신은 카드사 데이터 분석가입니다.' }}</p>
+    <div class="card-section">
+      <h2>📘 상황 설명</h2>
+      {% if problem.situation and problem.situation.strip() %}
+        <p>{{ problem.situation }}</p>
+      {% else %}
+        <p>상황 설명이 제공되지 않았습니다.</p>
+      {% endif %}
+    </div>
 
-        <h2>문제 설명</h2>
-        <p>{{ problem.title }}</p>
+    <div class="card-section">
+      <h2>📝 문제 설명</h2>
+      <p>{{ problem.title }}</p>
+    </div>
 
-        <h2>테이블 구조</h2>
-        <p>{{ problem.schema }}</p>
+    <div class="card-section">
+      <h2>📊 테이블 구조</h2>
+      <p>{{ problem.schema }}</p>
+    </div>
 
-        <h2>힌트</h2>
-        {% for hint in problem.hints %}
-            {% if trial >= loop.index %}
-                <button class="btn-hint" onclick="openHint('{{ hint }}')">힌트 {{ loop.index }}</button>
-            {% endif %}
-        {% endfor %}
+    <form method="POST">
+      <input type="hidden" name="trial" value="{{ trial | default(0) }}">
 
-        <h2>SQL 입력</h2>
-        <form method="POST">
-            <textarea id="sql-input" name="sql" placeholder="SQL 쿼리를 작성하세요">{{ submitted_sql }}</textarea>
-            <input type="hidden" name="trial" value="{{ trial }}">
-            <div class="button-group">
-                <button type="submit" class="btn-run">실행하기</button>
-                <button type="button" class="btn-pass" onclick="fillAnswer('{{ problem.answer | replace("'", "\\'") }}')">PASS</button>
-            </div>
-        </form>
+      <h2>💻 SQL 입력</h2>
+      <textarea name="sql" placeholder="여기에 SQL을 작성하세요">{{ submitted_sql }}</textarea>
 
-        {% if message %}
-        <p class="message">{{ message }}</p>
-        {% endif %}
-
-        {% if result %}
+      <!-- ✅ 실행 결과를 입력창 바로 아래로 -->
+      {% if result %}
         <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        {% for col in problem.columns %}
-                        <th>{{ col }}</th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in result %}
-                    <tr>
-                        {% for item in row %}
-                        <td>{{ item }}</td>
-                        {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+          <table>
+            <thead>
+              <tr>
+                {% for col in problem.columns %}
+                  <th>{{ col }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in result %}
+                <tr>
+                  {% for item in row %}
+                    <td>{{ item }}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-        {% endif %}
+      {% endif %}
 
-        {% if correct %}
-        <div class="next-button-wrapper" style="text-align: center; margin-top: 20px;">
-            <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
-        </div>
+      <div class="button-group">
+        <button type="submit" class="btn-run">실행하기</button>
+        {% if problem.answer %}
+          <button type="button" class="btn-pass" onclick="fillAnswer(`{{ problem.answer }}`)">정답 보기</button>
         {% endif %}
+      </div>
+    </form>
 
-    {% else %}
-        <script>
-            window.location.href = "/complete";
-        </script>
+    {% if message %}
+      <p class="message">{{ message }}</p>
     {% endif %}
 
-    </div>
+    {% if correct %}
+      <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
+    {% endif %}
+  </div>
 
-    <div id="hint-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeHint()">&times;</span>
-            <p id="hint-text"></p>
-        </div>
-    </div>
-
-    <script>
-    function openHint(hint) {
-        document.getElementById('hint-text').innerText = hint;
-        document.getElementById('hint-modal').style.display = 'block';
-    }
-    function closeHint() {
-        document.getElementById('hint-modal').style.display = 'none';
-    }
+  <script>
     function fillAnswer(answer) {
-        document.getElementById('sql-input').value = answer;
+      document.querySelector('textarea[name="sql"]').value = answer;
     }
-    </script>
+  </script>
 </body>
 </html>
