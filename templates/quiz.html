@@ -12,11 +12,7 @@
 
     <div class="card-section">
       <h2>📘 상황 설명</h2>
-      {% if problem.situation and problem.situation.strip() %}
-        <p>{{ problem.situation }}</p>
-      {% else %}
-        <p>상황 설명이 제공되지 않았습니다.</p>
-      {% endif %}
+      <p>{{ problem.situation }}</p>
     </div>
 
     <div class="card-section">
@@ -35,7 +31,6 @@
       <h2>💻 SQL 입력</h2>
       <textarea name="sql" placeholder="여기에 SQL을 작성하세요">{{ submitted_sql }}</textarea>
 
-      <!-- ✅ 실행 결과를 입력창 바로 아래로 -->
       {% if result %}
         <div class="table-wrapper">
           <table>
