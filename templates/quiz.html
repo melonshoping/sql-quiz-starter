@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SQL 퀴즈 {{ q }}</title>
   <link rel="stylesheet" href="/static/style_v2.css" />
+  <style>
+    .button-group {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .next-button-wrapper {
+      margin-top: 25px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -67,7 +79,9 @@
     {% endif %}
 
     {% if correct %}
-      <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
+      <div class="next-button-wrapper">
+        <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
+      </div>
     {% endif %}
   </div>
 
