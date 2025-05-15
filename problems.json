@@ -65,7 +65,7 @@
     "title": "어제 클릭코드가 'ins_tapp_AIACS'인 고객 중 AIA 생명 결제 페이지를 방문한 고객 수를 구하라.",
     "schema": "channel_logs(mem_id, click_code, screen_id, tx_date)",
     "situation": "사장님: 'AIA랑 협업 어떻게 되고 있는지 트래픽 좀 봐봐!' 팀장이 이를 받고 당신에게 급히 요청했다.\n주니어보드인 당신은 클릭 로그 데이터를 분석해야 한다.",
-    "answer": "SELECT COUNT(DISTINCT mem_id) FROM channel_logs WHERE click_code = 'ins_tapp_AIACS' AND tx_date = date('now', '-1 day') AND screen_id = 'aia_payment';",
+    "answer": "SELECT COUNT(DISTINCT mem_id) FROM channel_logs WHERE click_code = 'ins_tapp_AIACS' AND log_date = date('now', '-1 day') AND screen_id = 'aia_payment';",
     "columns": [
       "count"
     ],
