@@ -29,7 +29,7 @@ def quiz(q):
         submitted_sql = request.form['sql']
         trial = int(request.form['trial'])
         try:
-            # 사용자가 제출한 SQL 실행
+            # 사용자 SQL 실행
             c.execute(submitted_sql)
             result = c.fetchall()
 
@@ -37,8 +37,8 @@ def quiz(q):
             c.execute(problem['answer'])
             expected = c.fetchall()
 
-            # 결과값 비교
-            if result == expected:
+            # ✅ 결과 정렬 비교
+            if sorted(result) == sorted(expected):
                 correct = True
             else:
                 message = "결과가 정답과 다릅니다. 다시 시도해보세요."
