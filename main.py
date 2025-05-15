@@ -29,19 +29,25 @@ def quiz(q):
         submitted_sql = request.form['sql']
         trial = int(request.form['trial'])
         try:
+            # 사용자가 제출한 SQL 실행
             c.execute(submitted_sql)
             result = c.fetchall()
-            conn.commit()
-            if submitted_sql.strip().lower().replace(" ", "") == problem['answer'].strip().lower().replace(" ", ""):
-                correct = True
-            elif result == eval(problem['result']):
+
+            # 정답 SQL 실행
+            c.execute(problem['answer'])
+            expected = c.fetchall()
+
+            # 결과값 비교
+            if result == expected:
                 correct = True
             else:
-                message = "오답입니다. 다시 시도하세요."
+                message = "결과가 정답과 다릅니다. 다시 시도해보세요."
                 trial += 1
+
         except Exception as e:
             message = f"에러 발생: {str(e)}"
             trial += 1
+
         conn.close()
         return render_template('quiz.html', problem=problem, q=q, result=result,
                                correct=correct, submitted_sql=submitted_sql,
