@@ -32,11 +32,10 @@
             <input type="hidden" name="trial" value="{{ trial }}">
             <div class="button-group">
                 <button type="submit" class="btn-run">실행하기</button>
-                <button type="button" class="btn-pass" onclick="fillAnswer('{{ problem.answer | replace("'", "\\'") }}')">정답보기</button>
+                <button type="button" class="btn-pass" onclick="fillAnswer('{{ problem.answer | escapejs }}')">정답보기</button>
             </div>
         </form>
 
-        
         {% if correct %}
         <div class="next-button-wrapper" style="text-align: center; margin-top: 20px;">
             <a href="/quiz/{{ q + 1 }}" class="btn-next">다음 문제로 ➡️</a>
@@ -69,7 +68,6 @@
             </table>
         </div>
         {% endif %}
-
 
     {% else %}
         <script>
