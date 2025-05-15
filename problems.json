@@ -1,6 +1,7 @@
 [
   {
     "title": "이 회원의 모든 카드번호를 구하여라.",
+    "schema": "cards_held(mem_id, card_id)",
     "situation": "팀장: '우리 회원별 카드 보유현황도 모르고 뭐 하고 있는 거야? M0001 고객 카드 리스트 당장 뽑아봐.'\n당신은 주니어보드 멤버다. 갑작스러운 요청에 쿼리를 빠르게 작성해야 한다.",
     "answer": "SELECT card_id FROM cards_held WHERE mem_id = 'M0001';",
     "columns": [
@@ -15,6 +16,7 @@
   },
   {
     "title": "가맹점번호 'P0001'의 2024년 5월 매출 총합을 구하시오.",
+    "schema": "sales(mem_id, card_id, prt_id, tx_date, trn_id, cancel_yn, sale_amt)",
     "situation": "사장님이 올리브영과 제휴를 논의 중이다. 팀장이: 'P0001 가맹점 5월 매출 데이터 없으면 미팅 못 나가!'라고 닥달한다.\n당신은 주니어보드 멤버로 매출 데이터를 긴급 조회해야 한다.",
     "answer": "SELECT SUM(sale_amt) FROM sales WHERE prt_id = 'P0001' AND tx_date BETWEEN '2024-05-01' AND '2024-05-31';",
     "columns": [
@@ -30,6 +32,7 @@
   },
   {
     "title": "2024년 4월에 가맹점 '00001'에서 승인되었고, 앱푸시와 LMS 모두 동의한 고객을 찾아라.",
+    "schema": "approvals(mem_id, card_id, prt_id, tx_date, trn_id), marketing_consents(mem_id, app_push_yn, lms_yn)",
     "situation": "팀장: '마케팅 대상 추출해야 하니까 앱푸시랑 LMS 둘 다 동의한 고객만 필터해!'\n당신은 주니어보드 멤버고, 승인내역과 마케팅 테이블을 JOIN해서 분석해야 한다.",
     "answer": "SELECT DISTINCT a.mem_id FROM approvals a JOIN marketing_consents m ON a.mem_id = m.mem_id WHERE a.prt_id = '00001' AND a.tx_date BETWEEN '2024-04-01' AND '2024-04-30' AND m.app_push_yn = 'Y' AND m.lms_yn = 'Y';",
     "columns": [
@@ -45,6 +48,7 @@
   },
   {
     "title": "AOS를 사용하는 정상상태의 20대 회원 수를 구하시오.",
+    "schema": "members(mem_id, age, device, status)",
     "situation": "팀장: '20대 AOS 사용자만 타겟팅해서 보고서 작성해!' 갑작스러운 요청이다.\n당신은 주니어보드 멤버로, 회원 상태와 나이, 디바이스 필터링이 필요하다.",
     "answer": "SELECT COUNT(*) FROM members WHERE device = 'aos' AND status = '정상' AND age BETWEEN 20 AND 29;",
     "columns": [
@@ -59,6 +63,7 @@
   },
   {
     "title": "어제 클릭코드가 'ins_tapp_AIACS'인 고객 중 AIA 생명 결제 페이지를 방문한 고객 수를 구하라.",
+    "schema": "channel_logs(mem_id, click_code, screen_id, tx_date)",
     "situation": "사장님: 'AIA랑 협업 어떻게 되고 있는지 트래픽 좀 봐봐!' 팀장이 이를 받고 당신에게 급히 요청했다.\n주니어보드인 당신은 클릭 로그 데이터를 분석해야 한다.",
     "answer": "SELECT COUNT(DISTINCT mem_id) FROM channel_logs WHERE click_code = 'ins_tapp_AIACS' AND tx_date = date('now', '-1 day') AND screen_id = 'aia_payment';",
     "columns": [
