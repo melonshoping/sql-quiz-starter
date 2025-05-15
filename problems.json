@@ -1,24 +1,117 @@
 [
   {
-    "title": "급여가 5000 이상인 직원 이름과 급여를 조회하세요.",
-    "schema": "employees 테이블: id (정수), name (문자열), salary (정수)",
-    "columns": ["name", "salary"],
-    "answer": "SELECT name, salary FROM employees WHERE salary >= 5000;",
+    "title": "이 사람의 모든 카드번호를 구하여라.",
+    "schema": "cards_held 테이블: mem_id (문자열), card_id (문자열)",
+    "columns": [
+      "card_id"
+    ],
+    "answer": "SELECT card_id FROM cards_held WHERE mem_id = 'M0001';",
     "hints": [
-      "employees 테이블을 FROM 절에 사용하세요.",
-      "salary 컬럼을 WHERE 조건으로 사용하세요.",
-      "name과 salary를 SELECT 하세요."
+      "cards_held 테이블을 조회하세요.",
+      "조건절에 mem_id를 사용하세요."
     ]
   },
   {
-    "title": "이름에 'Kim'이 포함된 직원 목록을 조회하세요.",
-    "schema": "employees 테이블: id (정수), name (문자열), salary (정수)",
-    "columns": ["id", "name", "salary"],
-    "answer": "SELECT * FROM employees WHERE name LIKE '%Kim%';",
+    "title": "가맹점 번호 '00001'의 2024년 5월 매출합계금액을 구하시오.",
+    "schema": "sales 테이블: prt_id (문자열), tx_date (날짜), mem_id, tx_amount(가정), cancel_yn",
+    "columns": [],
+    "answer": "SELECT prt_id, COUNT(*) AS tx_count FROM sales WHERE prt_id = '00001' AND tx_date BETWEEN '2024-05-01' AND '2024-05-31';",
     "hints": [
-      "employees 테이블을 조회하세요.",
-      "name 컬럼에 LIKE 연산자를 사용하세요.",
-      "'%Kim%' 형태로 검색하세요."
+      "prt_id와 tx_date를 WHERE 조건으로 사용하세요.",
+      "GROUP BY 없이 COUNT로 집계하세요."
+    ]
+  },
+  {
+    "title": "어제 기준 앱푸시와 LMS를 모두 동의하고 4월에 '00001' 가맹점에서 승인된 고객을 찾으시오.",
+    "schema": "marketing_consents, approvals 테이블: app_push_yn, lms_yn, prt_id, tx_date",
+    "columns": [
+      "mem_id"
+    ],
+    "answer": "\n            SELECT DISTINCT a.mem_id\n            FROM approvals a\n            JOIN marketing_consents m ON a.mem_id = m.mem_id\n            WHERE a.prt_id = '00001'\n              AND a.tx_date BETWEEN '2024-04-01' AND '2024-04-30'\n              AND m.app_push_yn = 'Y' AND m.lms_yn = 'Y';\n        ",
+    "hints": [
+      "JOIN을 사용하세요.",
+      "마케팅 동의 조건과 4월 날짜 범위를 모두 지정하세요."
+    ]
+  },
+  {
+    "title": "AOS를 사용하는 정상 상태의 20대 회원 수를 구하시오.",
+    "schema": "members 테이블: device, status, age",
+    "columns": [
+      "cnt"
+    ],
+    "answer": "SELECT COUNT(*) AS cnt FROM members WHERE device = 'AOS' AND status = '정상' AND age BETWEEN 20 AND 29;",
+    "hints": [
+      "WHERE 절에 세 가지 조건을 모두 걸어주세요."
+    ]
+  },
+  {
+    "title": "클릭코드(ins_tapp_AIACS)를 통해 어제 AIA 이벤트 페이지(screen_id 기준)에 들어온 고객 수를 구하시오.",
+    "schema": "channel_logs 테이블: screen_id, click_code, log_date",
+    "columns": [
+      "cnt"
+    ],
+    "answer": "\n            SELECT COUNT(DISTINCT mem_id) AS cnt\n            FROM channel_logs\n            WHERE click_code = 'ins_tapp_AIACS'\n              AND screen_id = 'ins_tapp_AIACS'\n              AND log_date = '2024-05-30';\n        ",
+    "hints": [
+      "screen_id와 click_code를 조건으로 사용하세요.",
+      "어제 날짜 기준으로 조회하세요."
+    ]
+  },
+  {
+    "title": "회원 M0001이 A카드(C123456789)로 사용한 4월 매출 총합계를 구하시오.",
+    "schema": "sales 테이블: mem_id, card_id, tx_date",
+    "columns": [
+      "cnt"
+    ],
+    "answer": "\n            SELECT COUNT(*) AS cnt\n            FROM sales\n            WHERE mem_id = 'M0001'\n              AND card_id = 'C123456789'\n              AND tx_date BETWEEN '2024-04-01' AND '2024-04-30';\n        ",
+    "hints": [
+      "mem_id와 card_id를 WHERE 조건으로 사용하세요.",
+      "4월 날짜 범위도 조건에 포함하세요."
+    ]
+  },
+  {
+    "title": "2024년 4월 한 달간 RP 신청을 가장 많이 한 회원 ID를 구하시오.",
+    "schema": "rp_requests 테이블: mem_id, request_date",
+    "columns": [
+      "mem_id",
+      "cnt"
+    ],
+    "answer": "\n            SELECT mem_id, COUNT(*) AS cnt\n            FROM rp_requests\n            WHERE request_date BETWEEN '2024-04-01' AND '2024-04-30'\n            GROUP BY mem_id\n            ORDER BY cnt DESC\n            LIMIT 1;\n        ",
+    "hints": [
+      "GROUP BY와 COUNT를 사용하세요.",
+      "LIMIT 1로 가장 많이 신청한 회원을 찾으세요."
+    ]
+  },
+  {
+    "title": "승인 취소가 아닌 정상 승인 건수만 구하시오.",
+    "schema": "approvals 테이블: cancel_yn",
+    "columns": [
+      "cnt"
+    ],
+    "answer": "SELECT COUNT(*) AS cnt FROM approvals WHERE cancel_yn = 'N';",
+    "hints": [
+      "cancel_yn = 'N' 조건을 WHERE절에 넣으세요."
+    ]
+  },
+  {
+    "title": "마케팅 수단 전체(앱푸시, LMS, SMS, 이메일)에 모두 동의한 고객 수를 구하시오.",
+    "schema": "marketing_consents 테이블: app_push_yn, lms_yn, sms_yn, email_yn",
+    "columns": [
+      "cnt"
+    ],
+    "answer": "\n            SELECT COUNT(*) AS cnt\n            FROM marketing_consents\n            WHERE app_push_yn = 'Y'\n              AND lms_yn = 'Y'\n              AND sms_yn = 'Y'\n              AND email_yn = 'Y';\n        ",
+    "hints": [
+      "모든 동의 컬럼에 Y 조건을 걸어주세요."
+    ]
+  },
+  {
+    "title": "가장 최근 채널 로그를 남긴 회원의 ID를 구하시오.",
+    "schema": "channel_logs 테이블: log_date, mem_id",
+    "columns": [
+      "mem_id"
+    ],
+    "answer": "\n            SELECT mem_id\n            FROM channel_logs\n            ORDER BY log_date DESC\n            LIMIT 1;\n        ",
+    "hints": [
+      "ORDER BY log_date DESC와 LIMIT 1을 사용하세요."
     ]
   }
 ]
